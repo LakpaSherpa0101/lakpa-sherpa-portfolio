@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="p1Bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="p1Bar" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <linearGradient id="p1Accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="600" height="400" rx="16" fill="url(#p1Bg)"/>
+  
+  <!-- Browser Frame -->
+  <rect x="40" y="30" width="520" height="340" rx="12" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+  <rect x="40" y="30" width="520" height="36" rx="12" fill="#1e293b"/>
+  <!-- Window Controls -->
+  <circle cx="62" cy="48" r="6" fill="#ef4444"/>
+  <circle cx="82" cy="48" r="6" fill="#f59e0b"/>
+  <circle cx="102" cy="48" r="6" fill="#10b981"/>
+  <!-- Search/URL Bar -->
+  <rect x="130" y="40" width="280" height="18" rx="9" fill="#0f172a" opacity="0.6"/>
+  <text x="145" y="53" font-family="sans-serif" font-size="10" fill="#94a3b8">https://analytics.pulsehub.io</text>
+
+  <!-- Sidebar -->
+  <rect x="55" y="80" width="90" height="275" rx="8" fill="#1e293b" opacity="0.5"/>
+  <rect x="70" y="100" width="60" height="12" rx="6" fill="#6366f1"/>
+  <rect x="70" y="125" width="50" height="8" rx="4" fill="#475569"/>
+  <rect x="70" y="145" width="55" height="8" rx="4" fill="#475569"/>
+  <rect x="70" y="165" width="45" height="8" rx="4" fill="#475569"/>
+  <rect x="70" y="185" width="52" height="8" rx="4" fill="#475569"/>
+
+  <!-- Top Metric Cards -->
+  <rect x="160" y="80" width="115" height="60" rx="8" fill="#1e293b"/>
+  <text x="175" y="100" font-family="sans-serif" font-size="11" fill="#94a3b8">Total Revenue</text>
+  <text x="175" y="125" font-family="sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">$148,290</text>
+
+  <rect x="290" y="80" width="115" height="60" rx="8" fill="#1e293b"/>
+  <text x="305" y="100" font-family="sans-serif" font-size="11" fill="#94a3b8">Active Users</text>
+  <text x="305" y="125" font-family="sans-serif" font-size="16" font-weight="bold" fill="#38bdf8">42,500+</text>
+
+  <rect x="420" y="80" width="125" height="60" rx="8" fill="#1e293b"/>
+  <text x="435" y="100" font-family="sans-serif" font-size="11" fill="#94a3b8">Conversion</text>
+  <text x="435" y="125" font-family="sans-serif" font-size="16" font-weight="bold" fill="#10b981">18.4% ↑</text>
+
+  <!-- Big Chart Box -->
+  <rect x="160" y="155" width="385" height="150" rx="8" fill="#1e293b" opacity="0.8"/>
+  <text x="175" y="180" font-family="sans-serif" font-size="13" font-weight="600" fill="#f8fafc">Growth Analytics</text>
+  
+  <!-- Bar Charts -->
+  <rect x="180" y="240" width="18" height="50" rx="4" fill="url(#p1Bar)"/>
+  <rect x="215" y="220" width="18" height="70" rx="4" fill="url(#p1Bar)"/>
+  <rect x="250" y="200" width="18" height="90" rx="4" fill="url(#p1Bar)"/>
+  <rect x="285" y="215" width="18" height="75" rx="4" fill="url(#p1Bar)"/>
+  <rect x="320" y="190" width="18" height="100" rx="4" fill="url(#p1Bar)"/>
+  
+  <!-- Line Sparkline -->
+  <path d="M 360 270 Q 400 210, 440 230 T 520 180" fill="none" stroke="url(#p1Accent)" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="520" cy="180" r="5" fill="#38bdf8"/>
+
+  <!-- Footer Tag -->
+  <rect x="160" y="320" width="385" height="35" rx="8" fill="#1e293b" opacity="0.4"/>
+  <rect x="180" y="332" width="140" height="10" rx="5" fill="#475569"/>
+  <rect x="440" y="328" width="90" height="20" rx="10" fill="#6366f1"/>
+  <text x="485" y="342" font-family="sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">Live Dashboard</text>
+</svg>

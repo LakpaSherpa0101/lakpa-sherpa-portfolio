@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="50%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="laptopGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="30" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Glowing background circles -->
+  <circle cx="300" cy="300" r="230" fill="url(#heroGrad)" opacity="0.18" filter="url(#glow)"/>
+  <circle cx="300" cy="300" r="190" fill="none" stroke="url(#heroGrad)" stroke-width="2" stroke-dasharray="8 6" opacity="0.4"/>
+  <circle cx="300" cy="300" r="160" fill="#0f172a" stroke="#38bdf8" stroke-width="3" opacity="0.95"/>
+
+  <!-- Developer Silhouette / Character -->
+  <!-- Body / Hoodie -->
+  <path d="M 200 480 C 200 390, 240 370, 300 370 C 360 370, 400 390, 400 480 Z" fill="#3b82f6"/>
+  <path d="M 230 480 C 240 410, 270 380, 300 380 C 330 380, 360 410, 370 480 Z" fill="#1d4ed8"/>
+  <polygon points="280,380 320,380 300,430" fill="#60a5fa" opacity="0.5"/>
+
+  <!-- Neck & Face -->
+  <rect x="280" y="325" width="40" height="40" rx="6" fill="#fbcfe8"/>
+  <ellipse cx="300" cy="285" rx="52" ry="62" fill="#fed7aa"/>
+  <!-- Hair / Cap -->
+  <path d="M 245 270 C 245 220, 355 220, 355 270 C 335 250, 265 250, 245 270 Z" fill="#1e293b"/>
+  <path d="M 248 250 Q 300 190 352 250 Q 370 235 345 210 Q 300 180 255 210 Z" fill="#0f172a"/>
+
+  <!-- Glasses -->
+  <rect x="265" y="270" width="30" height="20" rx="5" fill="none" stroke="#0284c7" stroke-width="3"/>
+  <rect x="305" y="270" width="30" height="20" rx="5" fill="none" stroke="#0284c7" stroke-width="3"/>
+  <line x1="295" y1="280" x2="305" y2="280" stroke="#0284c7" stroke-width="3"/>
+  <!-- Smile -->
+  <path d="M 288 315 Q 300 325 312 315" stroke="#ea580c" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Laptop -->
+  <rect x="210" y="420" width="180" height="110" rx="8" fill="url(#laptopGrad)" stroke="#475569" stroke-width="2"/>
+  <rect x="220" y="430" width="160" height="90" rx="4" fill="#090d16"/>
+  <!-- Code on Laptop Screen -->
+  <rect x="230" y="442" width="60" height="4" rx="2" fill="#38bdf8"/>
+  <rect x="230" y="452" width="90" height="4" rx="2" fill="#a855f7"/>
+  <rect x="240" y="462" width="70" height="4" rx="2" fill="#22c55e"/>
+  <rect x="240" y="472" width="100" height="4" rx="2" fill="#f59e0b"/>
+  <rect x="230" y="482" width="40" height="4" rx="2" fill="#ec4899"/>
+  <!-- Laptop base -->
+  <path d="M 170 530 L 430 530 L 410 545 L 190 545 Z" fill="#64748b"/>
+  <rect x="270" y="533" width="60" height="4" rx="2" fill="#94a3b8"/>
+
+  <!-- Floating Badges -->
+  <!-- Badge 1: React / Code -->
+  <g transform="translate(100, 160)">
+    <rect width="110" height="44" rx="22" fill="#1e293b" stroke="#38bdf8" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="22" cy="22" r="12" fill="#0284c7"/>
+    <text x="22" y="26" font-family="monospace" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">&lt;/&gt;</text>
+    <text x="44" y="27" font-family="sans-serif" font-size="13" font-weight="bold" fill="#f8fafc">React.js</text>
+  </g>
+
+  <!-- Badge 2: Node.js / Backend -->
+  <g transform="translate(400, 180)">
+    <rect width="110" height="44" rx="22" fill="#1e293b" stroke="#22c55e" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="22" cy="22" r="12" fill="#16a34a"/>
+    <text x="22" y="27" font-family="sans-serif" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle">⚡</text>
+    <text x="44" y="27" font-family="sans-serif" font-size="13" font-weight="bold" fill="#f8fafc">Node.js</text>
+  </g>
+
+  <!-- Badge 3: Cloud / DevOps -->
+  <g transform="translate(420, 380)">
+    <rect width="120" height="44" rx="22" fill="#1e293b" stroke="#a855f7" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="22" cy="22" r="12" fill="#9333ea"/>
+    <text x="22" y="27" font-family="sans-serif" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle">☁</text>
+    <text x="44" y="27" font-family="sans-serif" font-size="13" font-weight="bold" fill="#f8fafc">Cloud/AWS</text>
+  </g>
+
+  <!-- Badge 4: Clean Code / 100% -->
+  <g transform="translate(70, 370)">
+    <rect width="125" height="44" rx="22" fill="#1e293b" stroke="#f59e0b" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="22" cy="22" r="12" fill="#d97706"/>
+    <text x="22" y="27" font-family="sans-serif" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle">★</text>
+    <text x="44" y="27" font-family="sans-serif" font-size="13" font-weight="bold" fill="#f8fafc">UI & UX</text>
+  </g>
+</svg>

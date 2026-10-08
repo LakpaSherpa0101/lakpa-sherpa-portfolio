@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="p3Bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#042f2e" />
+      <stop offset="100%" stop-color="#021a1a" />
+    </linearGradient>
+    <linearGradient id="cardEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" rx="16" fill="url(#p3Bg)"/>
+
+  <!-- Browser Frame -->
+  <rect x="40" y="30" width="520" height="340" rx="12" fill="#061c1b" stroke="#115e59" stroke-width="2"/>
+  <rect x="40" y="30" width="520" height="36" rx="12" fill="#0f3b39"/>
+  <circle cx="62" cy="48" r="6" fill="#ef4444"/>
+  <circle cx="82" cy="48" r="6" fill="#f59e0b"/>
+  <circle cx="102" cy="48" r="6" fill="#10b981"/>
+  <rect x="130" y="40" width="280" height="18" rx="9" fill="#061c1b" opacity="0.8"/>
+  <text x="145" y="53" font-family="sans-serif" font-size="10" fill="#2dd4bf">https://finpay-global.net/wallet</text>
+
+  <!-- Credit Card Graphic -->
+  <rect x="70" y="90" width="220" height="135" rx="14" fill="url(#cardEmerald)" filter="drop-shadow(0 10px 15px rgba(0,0,0,0.5))"/>
+  <circle cx="100" cy="115" r="14" fill="#a7f3d0" opacity="0.8"/>
+  <circle cx="120" cy="115" r="14" fill="#6ee7b7" opacity="0.8"/>
+  <text x="95" y="175" font-family="monospace" font-size="13" font-weight="bold" fill="#ecfdf5">•••• •••• •••• 8842</text>
+  <text x="95" y="202" font-family="sans-serif" font-size="9" fill="#a7f3d0">CARDHOLDER</text>
+  <text x="95" y="213" font-family="sans-serif" font-size="11" font-weight="bold" fill="#ffffff">ALEXANDER CHEN</text>
+  <text x="235" y="213" font-family="sans-serif" font-size="11" font-weight="bold" fill="#ffffff">09/28</text>
+
+  <!-- Quick Balance Card -->
+  <rect x="310" y="90" width="220" height="135" rx="14" fill="#0a2e2b" stroke="#14b8a6" stroke-width="1.5"/>
+  <text x="330" y="115" font-family="sans-serif" font-size="12" fill="#99f6e4">Total Balance</text>
+  <text x="330" y="145" font-family="sans-serif" font-size="24" font-weight="bold" fill="#ffffff">$84,920.50</text>
+  <rect x="330" y="165" width="80" height="24" rx="12" fill="#047857"/>
+  <text x="370" y="181" font-family="sans-serif" font-size="10" font-weight="bold" fill="#a7f3d0" text-anchor="middle">+ 14.8% APR</text>
+  <circle cx="485" cy="120" r="18" fill="url(#goldGrad)"/>
+  <text x="485" y="126" font-family="sans-serif" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle">$</text>
+
+  <!-- Transaction Activity Table -->
+  <rect x="70" y="245" width="460" height="105" rx="10" fill="#0a2a28"/>
+  <text x="90" y="268" font-family="sans-serif" font-size="12" font-weight="bold" fill="#e6fffa">Recent Activity</text>
+  
+  <rect x="90" y="282" width="420" height="26" rx="6" fill="#061c1b"/>
+  <circle cx="105" cy="295" r="6" fill="#10b981"/>
+  <text x="120" y="299" font-family="sans-serif" font-size="11" fill="#ccfbf1">Stripe Payout Recv</text>
+  <text x="495" y="299" font-family="sans-serif" font-size="11" font-weight="bold" fill="#34d399" text-anchor="end">+$3,450.00</text>
+
+  <rect x="90" y="314" width="420" height="26" rx="6" fill="#061c1b"/>
+  <circle cx="105" cy="327" r="6" fill="#38bdf8"/>
+  <text x="120" y="331" font-family="sans-serif" font-size="11" fill="#ccfbf1">AWS Cloud Services</text>
+  <text x="495" y="331" font-family="sans-serif" font-size="11" font-weight="bold" fill="#f87171" text-anchor="end">-$412.50</text>
+</svg>

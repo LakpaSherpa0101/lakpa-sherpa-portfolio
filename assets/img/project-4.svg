@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="p4Bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="mobileGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" rx="16" fill="url(#p4Bg)"/>
+
+  <!-- Mobile Mockup Center-Left -->
+  <rect x="70" y="35" width="180" height="330" rx="28" fill="#020617" stroke="#475569" stroke-width="3"/>
+  <!-- Speaker notch -->
+  <rect x="130" y="45" width="60" height="6" rx="3" fill="#334155"/>
+  <!-- Mobile Screen -->
+  <rect x="80" y="60" width="160" height="285" rx="18" fill="#0f172a"/>
+  <rect x="95" y="75" width="130" height="60" rx="10" fill="url(#mobileGrad)"/>
+  <text x="105" y="95" font-family="sans-serif" font-size="10" fill="#e0f2fe">Daily Target</text>
+  <text x="105" y="118" font-family="sans-serif" font-size="18" font-weight="bold" fill="#ffffff">8,420 kcal</text>
+  
+  <rect x="95" y="145" width="130" height="40" rx="8" fill="#1e293b"/>
+  <circle cx="115" cy="165" r="12" fill="#ec4899"/>
+  <text x="135" y="162" font-family="sans-serif" font-size="9" fill="#94a3b8">Cardio BPM</text>
+  <text x="135" y="174" font-family="sans-serif" font-size="11" font-weight="bold" fill="#f8fafc">134 / min</text>
+
+  <rect x="95" y="195" width="130" height="40" rx="8" fill="#1e293b"/>
+  <circle cx="115" cy="215" r="12" fill="#10b981"/>
+  <text x="135" y="212" font-family="sans-serif" font-size="9" fill="#94a3b8">Sleep Quality</text>
+  <text x="135" y="224" font-family="sans-serif" font-size="11" font-weight="bold" fill="#f8fafc">8 hrs 24 min</text>
+
+  <!-- Mobile Bottom Nav -->
+  <rect x="95" y="305" width="130" height="30" rx="15" fill="#1e293b"/>
+  <circle cx="115" cy="320" r="5" fill="#38bdf8"/>
+  <circle cx="145" cy="320" r="5" fill="#64748b"/>
+  <circle cx="175" cy="320" r="5" fill="#64748b"/>
+  <circle cx="205" cy="320" r="5" fill="#64748b"/>
+
+  <!-- Desktop Companion Panel Right -->
+  <rect x="280" y="55" width="270" height="290" rx="14" fill="#1e293b" stroke="#334155" stroke-width="2"/>
+  <text x="305" y="90" font-family="sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">Cross-Platform Sync</text>
+  <text x="305" y="110" font-family="sans-serif" font-size="11" fill="#94a3b8">React Native + GraphQL + Node</text>
+
+  <rect x="305" y="130" width="220" height="50" rx="8" fill="#0f172a"/>
+  <text x="320" y="150" font-family="sans-serif" font-size="11" fill="#38bdf8">Real-time WebSocket Feed</text>
+  <text x="320" y="168" font-family="sans-serif" font-size="10" fill="#64748b">Latency: 14ms (99.98% uptime)</text>
+
+  <rect x="305" y="190" width="220" height="50" rx="8" fill="#0f172a"/>
+  <text x="320" y="210" font-family="sans-serif" font-size="11" fill="#10b981">Offline SQLite Caching</text>
+  <text x="320" y="228" font-family="sans-serif" font-size="10" fill="#64748b">Encrypted biometrics storage</text>
+
+  <rect x="305" y="260" width="220" height="60" rx="8" fill="#0f172a"/>
+  <text x="320" y="282" font-family="sans-serif" font-size="11" fill="#f59e0b">Multi-device notifications</text>
+  <rect x="320" y="295" width="190" height="12" rx="6" fill="#334155"/>
+  <rect x="320" y="295" width="145" height="12" rx="6" fill="#38bdf8"/>
+</svg>
