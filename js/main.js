@@ -1,6 +1,6 @@
 /**
- * Modern Developer Portfolio - Main Interactive Script
- * Features: Dark/Light Mode, Typewriter, Filters, Counters, Modals, Form Toast
+ * Lakpa Sherpa - AI Engineer Portfolio Script
+ * Interactive Features: Theme Switcher, Typewriter, Project Modals, Skills Filtering, Contact Validation & Toast
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,8 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTypewriter();
   initNavbarScroll();
   initScrollReveal();
-  initStatsCounter();
-  initSkillProgressBars();
+  initSkillFiltering();
   initProjectFiltering();
   initProjectModal();
   initContactForm();
@@ -62,18 +61,26 @@ function initThemeToggle() {
 }
 
 /* ==========================================================================
-   2. Typewriter Effect
+   2. Typewriter Effect for AI Engineer
    ========================================================================== */
 function initTypewriter() {
   const textElement = document.getElementById('typewriterText');
   if (!textElement) return;
 
   const roles = [
-    'Full Stack Engineer',
-    'UI/UX Craftsman',
-    'Cloud & DevOps Enthusiast',
-    'Open Source Contributor'
+    'AI Engineer',
+    'Machine Learning Specialist',
+    'Deep Learning Practitioner',
+    'LLMs & AI Agents Builder',
+    'Intelligent Software Developer'
   ];
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    textElement.textContent = roles[0];
+    const cursor = document.querySelector('.typewriter-cursor');
+    if (cursor) cursor.style.display = 'none';
+    return;
+  }
 
   let roleIndex = 0;
   let charIndex = 0;
@@ -86,7 +93,7 @@ function initTypewriter() {
     if (isDeleting) {
       textElement.textContent = currentRole.substring(0, charIndex - 1);
       charIndex--;
-      typingSpeed = 45;
+      typingSpeed = 40;
     } else {
       textElement.textContent = currentRole.substring(0, charIndex + 1);
       charIndex++;
@@ -94,12 +101,12 @@ function initTypewriter() {
     }
 
     if (!isDeleting && charIndex === currentRole.length) {
-      typingSpeed = 1800; // Pause at end of word
+      typingSpeed = 1900; // Pause at end of title
       isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       roleIndex = (roleIndex + 1) % roles.length;
-      typingSpeed = 350; // Pause before new word
+      typingSpeed = 350; // Pause before next title
     }
 
     setTimeout(type, typingSpeed);
@@ -109,7 +116,7 @@ function initTypewriter() {
 }
 
 /* ==========================================================================
-   3. Sticky Navbar & Active Link Highlights
+   3. Sticky Navbar & Mobile Offcanvas Auto-Close
    ========================================================================== */
 function initNavbarScroll() {
   const navbar = document.querySelector('.navbar-custom');
@@ -123,7 +130,6 @@ function initNavbarScroll() {
     }
   });
 
-  // Close mobile offcanvas/navbar collapse when a link is clicked
   const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
   const navCollapse = document.getElementById('navbarNav');
   if (navCollapse) {
@@ -139,111 +145,99 @@ function initNavbarScroll() {
 }
 
 /* ==========================================================================
-   4. Scroll Reveal Animations (IntersectionObserver)
+   4. Premium Scroll Reveal Animations (Progressive & Staggered)
    ========================================================================== */
 function initScrollReveal() {
-  const reveals = document.querySelectorAll('.reveal-on-scroll');
-  if (!reveals.length) return;
+  const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealElements = document.querySelectorAll('.reveal-on-scroll, .reveal-fade-in, .reveal-scale-in');
+  if (!revealElements.length) return;
 
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
-          obs.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.12 }
-  );
-
-  reveals.forEach(el => observer.observe(el));
-}
-
-/* ==========================================================================
-   5. Animated Stats Counter
-   ========================================================================== */
-function initStatsCounter() {
-  const statNumbers = document.querySelectorAll('.stat-number[data-target]');
-  if (!statNumbers.length) return;
-
-  let hasAnimated = false;
-
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !hasAnimated) {
-          hasAnimated = true;
-          statNumbers.forEach(counter => {
-            const target = parseInt(counter.getAttribute('data-target'), 10);
-            const suffix = counter.getAttribute('data-suffix') || '';
-            const duration = 1800;
-            const startTime = performance.now();
-
-            function updateCounter(currentTime) {
-              const elapsed = currentTime - startTime;
-              const progress = Math.min(elapsed / duration, 1);
-              // Ease-out cubic formula
-              const easeOut = 1 - Math.pow(1 - progress, 3);
-              const currentValue = Math.floor(easeOut * target);
-
-              counter.textContent = currentValue + suffix;
-
-              if (progress < 1) {
-                requestAnimationFrame(updateCounter);
-              } else {
-                counter.textContent = target + suffix;
-              }
-            }
-
-            requestAnimationFrame(updateCounter);
-          });
-          obs.disconnect();
-        }
-      });
-    },
-    { threshold: 0.3 }
-  );
-
-  const statsSection = document.querySelector('.stats-section');
-  if (statsSection) {
-    observer.observe(statsSection);
+  if (isReducedMotion) {
+    revealElements.forEach(el => el.classList.add('revealed'));
+    return;
   }
-}
 
-/* ==========================================================================
-   6. Skills Progress Bars Fill Animation
-   ========================================================================== */
-function initSkillProgressBars() {
-  const skillBars = document.querySelectorAll('.custom-progress-bar');
-  if (!skillBars.length) return;
+  if (!('IntersectionObserver' in window)) {
+    revealElements.forEach(el => el.classList.add('revealed'));
+    return;
+  }
+
+  // Pre-apply staggered transition delays for grid cards
+  const gridGroups = document.querySelectorAll('#skillsContainer, #projectsGrid, .resume-highlights-grid, .timeline, .experience-focus-grid');
+  gridGroups.forEach(group => {
+    const children = group.children;
+    Array.from(children).forEach((child, idx) => {
+      const delay = Math.min(idx * 75, 450); // Progressive cascade up to 450ms
+      child.style.transitionDelay = `${delay}ms`;
+    });
+  });
 
   const observer = new IntersectionObserver(
-    (entries, obs) => {
+    entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          skillBars.forEach(bar => {
-            const progress = bar.getAttribute('data-progress');
-            bar.style.width = `${progress}%`;
-          });
-          obs.disconnect();
-        }
+        entry.target.classList.toggle('revealed', entry.isIntersecting);
       });
     },
-    { threshold: 0.2 }
+    {
+      threshold: 0.01,
+      rootMargin: '0px 0px -40px 0px'
+    }
   );
 
-  const skillsSection = document.querySelector('.skills-section');
-  if (skillsSection) {
-    observer.observe(skillsSection);
-  }
+  document.body.classList.add('scroll-reveal-ready');
+  revealElements.forEach(el => observer.observe(el));
 }
 
 /* ==========================================================================
-   7. Portfolio Project Filtering
+   5. Skills Categories Quick Filter
+   ========================================================================== */
+function initSkillFiltering() {
+  const skillFilters = document.querySelectorAll('.skill-filter-btn');
+  const skillBoxes = document.querySelectorAll('.skill-filter-item');
+  if (!skillFilters.length || !skillBoxes.length) return;
+
+  const hideTimers = new Map();
+
+  skillFilters.forEach(btn => {
+    btn.addEventListener('click', () => {
+      skillFilters.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+
+      const filterVal = btn.getAttribute('data-skill-filter');
+
+      skillBoxes.forEach(item => {
+        const hideTimer = hideTimers.get(item);
+        if (hideTimer) {
+          clearTimeout(hideTimer);
+          hideTimers.delete(item);
+        }
+
+        const categories = (item.getAttribute('data-skill-category') || '').split(/\s+/);
+        const matchesFilter = filterVal === 'all' || categories.includes(filterVal);
+        if (matchesFilter) {
+          item.style.display = '';
+          requestAnimationFrame(() => item.classList.remove('is-filtering-out'));
+        } else {
+          item.classList.add('is-filtering-out');
+          hideTimers.set(item, setTimeout(() => {
+            item.style.display = 'none';
+            hideTimers.delete(item);
+          }, 250));
+        }
+      });
+    });
+  });
+}
+
+/* ==========================================================================
+   6. Projects Filter
    ========================================================================== */
 function initProjectFiltering() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
+  const filterBtns = document.querySelectorAll('.projects-section .filter-btn');
   const projectItems = document.querySelectorAll('.project-item');
 
   filterBtns.forEach(btn => {
@@ -254,19 +248,19 @@ function initProjectFiltering() {
       const filterValue = btn.getAttribute('data-filter');
 
       projectItems.forEach(item => {
-        const itemCategory = item.getAttribute('data-category');
+        const itemCategory = item.getAttribute('data-category') || '';
         if (filterValue === 'all' || itemCategory.includes(filterValue)) {
-          item.style.display = 'block';
+          item.style.display = '';
           setTimeout(() => {
             item.style.opacity = '1';
             item.style.transform = 'scale(1)';
           }, 10);
         } else {
           item.style.opacity = '0';
-          item.style.transform = 'scale(0.92)';
+          item.style.transform = 'scale(0.95)';
           setTimeout(() => {
             item.style.display = 'none';
-          }, 250);
+          }, 200);
         }
       });
     });
@@ -274,98 +268,25 @@ function initProjectFiltering() {
 }
 
 /* ==========================================================================
-   8. Dynamic Project Quick View Modal
+   7. Dynamic Project Details Modal Data
    ========================================================================== */
 const projectData = {
   1: {
-    title: "PulseHub - Enterprise SaaS Analytics",
-    category: "Full Stack / SaaS",
-    image: "assets/img/project-1.svg",
-    desc: "A high-performance real-time analytics dashboard serving over 42,000 active users. Engineered with React, Node.js microservices, and ClickHouse for sub-second query performance on terabytes of event logs.",
+    title: "Student Management System",
+    category: "Full Stack & Web Application",
+    image: "assets/img/project-student-system.svg",
+    desc: "A full-stack Student Management System engineered to efficiently manage student information, academic records, and administrative operations. Features a clean, responsive admin dashboard with relational database persistence and role-based actions.",
     features: [
-      "Real-time event streaming and conversion funnels",
-      "Interactive data visualizations with WebGL acceleration",
-      "Role-based access control (RBAC) and SAML SSO integration",
-      "Automated PDF report scheduler with cron"
+      "Student registration and detailed student profiles",
+      "Full CRUD operations (Add, edit, update, delete student records)",
+      "High-speed student search by ID, name, or department",
+      "Academic information, marks, and course enrollment records",
+      "Relational MySQL database integration with structured schemas",
+      "Secure administrative authentication and role authorization",
+      "Admin dashboard with real-time operational metrics",
+      "Fully responsive user interface optimized across desktop and mobile"
     ],
-    tech: ["React.js", "Node.js", "ClickHouse", "Docker", "Tailwind CSS"],
-    liveUrl: "https://pulsehub.example.com",
-    githubUrl: "https://github.com/example/pulsehub-analytics"
-  },
-  2: {
-    title: "Nexus AI - Automated Code Intelligence",
-    category: "AI & Full Stack",
-    image: "assets/img/project-2.svg",
-    desc: "An intelligent generative AI assistant for engineering teams. Translates requirements to code architecture, audits security vulnerabilities, and generates end-to-end unit test suites with 98% coverage.",
-    features: [
-      "LLM integration with streaming tokens via SSE",
-      "Semantic code search using vector embeddings (Pinecone)",
-      "Automated GitHub PR review bot integration",
-      "Local execution sandbox for test validation"
-    ],
-    tech: ["Next.js 14", "Python FastAPI", "LangChain", "OpenAI API", "PostgreSQL"],
-    liveUrl: "https://nexus-ai.example.com",
-    githubUrl: "https://github.com/example/nexus-ai-studio"
-  },
-  3: {
-    title: "FinPay Global - Digital Cross-Border Wallet",
-    category: "FinTech / API",
-    image: "assets/img/project-3.svg",
-    desc: "A secure cross-border payment platform with automated currency conversion, PCI-DSS compliant payment processing, and instantaneous settlement via Stripe & Plaid integrations.",
-    features: [
-      "Multi-currency virtual wallet with real-time FX rates",
-      "Stripe Connect & Plaid Instant Bank Verification",
-      "Two-factor authentication with biometrics (WebAuthn)",
-      "Automated invoicing & ledger reconciliation"
-    ],
-    tech: ["TypeScript", "Express.js", "Redis", "Stripe API", "PostgreSQL"],
-    liveUrl: "https://finpay.example.com",
-    githubUrl: "https://github.com/example/finpay-platform"
-  },
-  4: {
-    title: "AuraFit - Cross-Platform Health Tracker",
-    category: "Mobile / Frontend",
-    image: "assets/img/project-4.svg",
-    desc: "A seamless health tracking application that aggregates metrics across smartwatches and mobile sensors. Features real-time heart rate graphing and customized workout recommendations.",
-    features: [
-      "Offline-first synchronization with SQLite and Couchbase",
-      "WebSocket connection with sub-20ms heartbeat latency",
-      "Apple HealthKit & Google Fit API data synchronization",
-      "Dark-mode prioritized accessible user interface"
-    ],
-    tech: ["React Native", "GraphQL", "Node.js", "SQLite", "Chart.js"],
-    liveUrl: "https://aurafit.example.com",
-    githubUrl: "https://github.com/example/aurafit-mobile"
-  },
-  5: {
-    title: "KubePulse - Kubernetes Cluster Monitor",
-    category: "Cloud / DevOps",
-    image: "assets/img/project-5.svg",
-    desc: "An infrastructure observability cockpit built to monitor container clusters across AWS EKS and GCP. Detects pod crashes, visualizes memory pressure, and alerts team Slack channels in real time.",
-    features: [
-      "Automated Prometheus metrics scraping and Grafana views",
-      "Dynamic pod auto-scaler simulator for stress tests",
-      "Slack and PagerDuty webhook alerting triggers",
-      "Terraform modular configuration templates included"
-    ],
-    tech: ["Go (Golang)", "Kubernetes", "Prometheus", "Docker", "AWS"],
-    liveUrl: "https://kubepulse.example.com",
-    githubUrl: "https://github.com/example/kubepulse-monitor"
-  },
-  6: {
-    title: "TaskFlow - Enterprise Kanban Workspace",
-    category: "Full Stack / Productivity",
-    image: "assets/img/project-6.svg",
-    desc: "An enterprise-grade collaborative workflow manager with drag-and-drop boards, live team cursor presence, and automation rules that streamline agile sprint deliveries.",
-    features: [
-      "Multiplayer live cursors and updates using WebSockets",
-      "Drag-and-drop Kanban columns with smooth physics",
-      "Custom trigger workflows (e.g. status change notifications)",
-      "Exportable Sprint burndown & velocity charts"
-    ],
-    tech: ["Vue.js 3", "Node.js", "Socket.io", "MongoDB", "Bootstrap 5"],
-    liveUrl: "https://taskflow.example.com",
-    githubUrl: "https://github.com/example/taskflow-workspace"
+    tech: ["Python", "Flask", "MySQL", "HTML5", "CSS3", "JavaScript", "REST APIs"]
   }
 };
 
@@ -380,8 +301,6 @@ function initProjectModal() {
   const modalDesc = document.getElementById('modalProjectDesc');
   const modalFeaturesList = document.getElementById('modalProjectFeatures');
   const modalTechStack = document.getElementById('modalProjectTech');
-  const modalLiveLink = document.getElementById('modalProjectLive');
-  const modalGithubLink = document.getElementById('modalProjectGithub');
 
   quickViewBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -400,8 +319,8 @@ function initProjectModal() {
       modalFeaturesList.innerHTML = '';
       data.features.forEach(feat => {
         const li = document.createElement('li');
-        li.className = 'mb-1 d-flex align-items-center gap-2';
-        li.innerHTML = `<i class="bi bi-check-circle-fill text-success"></i> <span>${feat}</span>`;
+        li.className = 'mb-2 d-flex align-items-start gap-2';
+        li.innerHTML = `<i class="bi bi-check-circle-fill text-success mt-1"></i> <span>${feat}</span>`;
         modalFeaturesList.appendChild(li);
       });
 
@@ -414,10 +333,6 @@ function initProjectModal() {
         modalTechStack.appendChild(span);
       });
 
-      // Update links
-      modalLiveLink.href = data.liveUrl;
-      modalGithubLink.href = data.githubUrl;
-
       // Open modal
       const modal = new bootstrap.Modal(modalElement);
       modal.show();
@@ -426,7 +341,7 @@ function initProjectModal() {
 }
 
 /* ==========================================================================
-   9. Contact Form Validation & Toast Notification
+   8. Contact Form Validation & Toast Notification
    ========================================================================== */
 function initContactForm() {
   const form = document.getElementById('contactForm');
@@ -447,7 +362,7 @@ function initContactForm() {
 
     // Simulate sending state
     submitBtn.disabled = true;
-    submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status"></span> Sending...`;
+    submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status"></span> Sending Message...`;
 
     setTimeout(() => {
       submitBtn.disabled = false;
@@ -457,15 +372,15 @@ function initContactForm() {
 
       // Trigger Toast notification
       if (toastEl) {
-        const toast = new bootstrap.Toast(toastEl, { delay: 4000 });
+        const toast = new bootstrap.Toast(toastEl, { delay: 4500 });
         toast.show();
       }
-    }, 1200);
+    }, 1100);
   });
 }
 
 /* ==========================================================================
-   10. Back to Top Button
+   9. Back to Top Button
    ========================================================================== */
 function initBackToTop() {
   const backToTopBtn = document.getElementById('backToTopBtn');

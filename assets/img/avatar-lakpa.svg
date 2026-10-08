@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="50%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0b0f19" />
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="15" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="400" height="400" rx="28" fill="url(#cardBg)" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+
+  <!-- Glowing outer circular rings -->
+  <circle cx="200" cy="180" r="130" fill="none" stroke="url(#avatarGrad)" stroke-width="2" stroke-dasharray="6 4" opacity="0.6"/>
+  <circle cx="200" cy="180" r="115" fill="#1e1b4b" stroke="#6366f1" stroke-width="3" filter="url(#softGlow)"/>
+
+  <!-- Character Silhouette -->
+  <!-- Shoulders & Torso -->
+  <path d="M 115 285 C 115 220, 150 210, 200 210 C 250 210, 285 220, 285 285 Z" fill="#3b82f6"/>
+  <path d="M 140 285 C 150 235, 175 218, 200 218 C 225 218, 250 235, 260 285 Z" fill="#1e40af"/>
+
+  <!-- Neck -->
+  <rect x="186" y="172" width="28" height="28" rx="4" fill="#fed7aa"/>
+
+  <!-- Head -->
+  <ellipse cx="200" cy="145" rx="38" ry="46" fill="#fed7aa"/>
+  
+  <!-- Hair -->
+  <path d="M 160 135 C 160 95, 240 95, 240 135 C 225 118, 175 118, 160 135 Z" fill="#0f172a"/>
+  
+  <!-- Modern Tech Glasses -->
+  <rect x="175" y="135" width="22" height="15" rx="4" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+  <rect x="203" y="135" width="22" height="15" rx="4" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+  <line x1="197" y1="142" x2="203" y2="142" stroke="#38bdf8" stroke-width="2.5"/>
+
+  <!-- Smile -->
+  <path d="M 192 168 Q 200 174 208 168" stroke="#ea580c" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- Floating AI Badges around avatar -->
+  <g transform="translate(60, 110)">
+    <rect width="64" height="26" rx="13" fill="#0f172a" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="32" y="17" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#c084fc" text-anchor="middle">AI / ML</text>
+  </g>
+
+  <g transform="translate(275, 120)">
+    <rect width="65" height="26" rx="13" fill="#0f172a" stroke="#06b6d4" stroke-width="1.5"/>
+    <text x="32" y="17" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#38bdf8" text-anchor="middle">Python</text>
+  </g>
+
+  <!-- Bottom Info Banner -->
+  <g transform="translate(30, 316)">
+    <rect width="340" height="60" rx="12" fill="#1e293b" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+    <text x="170" y="26" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#f8fafc" text-anchor="middle">Lakpa Sherpa</text>
+    <text x="170" y="46" font-family="'JetBrains Mono', monospace" font-size="11" fill="#38bdf8" text-anchor="middle">AI Engineer • Kathmandu, Nepal</text>
+  </g>
+</svg>
